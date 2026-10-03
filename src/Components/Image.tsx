@@ -5,12 +5,13 @@ type IProps = {
   className: string,
     width?: string,
   height?: string,
-    
+  priorty?: boolean
 }
 
-function Image({imageUrl,alt,className,width,height}: IProps) {
+function Image({imageUrl,alt,className,width,height,priorty}: IProps) {
   return (
-    <img loading="lazy" src={imageUrl} 
+    <img    loading={priorty?"eager":"lazy"}
+      fetchPriority={priorty?"high":"auto"} src={imageUrl} 
       style={{ width: width, height: height }} alt={alt} className={className} />
   )
 }

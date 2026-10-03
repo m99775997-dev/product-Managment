@@ -241,7 +241,7 @@ const [allProducts, setAllProducts] = useState<IProduct[]>(() => {
           setSelectedColors((prev) => prev.filter(el => el !== color));
           return;
         }
-        setSelectedColors((prev)=>[...prev,color])
+        setSelectedColors((prev)=>[color,...prev])
       }} key={color} color={color} />)
   const renderEditProductColors = colors.map((color, index) => 
     
@@ -251,7 +251,7 @@ const [allProducts, setAllProducts] = useState<IProduct[]>(() => {
 
         return;
       }
-      setSelectedEditColors((prev) => [...prev, color])
+      setSelectedEditColors((prev) => [color,...prev])
       
       
       }} key={`${color}-${index}`} color={color} />

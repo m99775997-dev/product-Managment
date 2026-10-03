@@ -20,6 +20,7 @@ interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 function ProductCard({ product, openModel, handleDelete, setProductToEdit, idx, setProductEditIdx,setSelectedEditColors }: IProps) {
   /*------states----- */
   const [isOpen, setIsOpen] = useState(false);
+  
   const { imageUrl, title, description, category, colors, price } = product;
   /*-------handlers--------- */
   const onEdit = () => {
@@ -29,7 +30,8 @@ function ProductCard({ product, openModel, handleDelete, setProductToEdit, idx, 
     console.log(product.colors);
     setSelectedEditColors(product.colors);
   }
- 
+  
+  
   /**-----renders----- */
     const renderColors = colors.map((color) =>
       <ColorCircle
@@ -40,9 +42,9 @@ function ProductCard({ product, openModel, handleDelete, setProductToEdit, idx, 
   return (
       <div className="bg-white/80  border border-gray-200  shadow-lg rounded-md p-4">
        
-          <Image   imageUrl={imageUrl} alt={title} className="object-cover   object-center aspect-3/2 rounded-md" />
+          <Image  priorty={idx < 3}   imageUrl={imageUrl} alt={title} className="object-cover   object-center aspect-3/2 rounded-md" />
       <h3 className="text-gray-700 font-bold text-xl my-2">{slicerTxt(title,15)}</h3>
-      <p className="text-gray-500">{slicerTxt(description,25) }</p>
+      <p className="text-gray-500">{slicerTxt(description,20) }</p>
           
          
           <div className="flex my-4 justify-between items-center">
